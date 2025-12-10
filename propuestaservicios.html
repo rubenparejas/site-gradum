@@ -3,15 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Consultoría Académica y Empresarial | Investigación de Alto Nivel</title>
+    <title>GRADUM | Tesis, Investigación y Ciencia de Datos</title>
     <style>
-        /* --- ESTILOS GENERALES (CSS) --- */
+        /* --- ESTILOS GENERALES Y PALETA DE COLORES (CSS) --- */
         :root {
-            --primary-color: #003366; /* Azul Académico */
-            --secondary-color: #f0f4f8; /* Gris muy claro */
-            --accent-color: #b7950b; /* Dorado sutil para detalles */
+            /* Colores extraídos del logo GRADUM */
+            --primary-red: #A31621; /* Rojo intenso del birrete y texto principal */
+            --primary-dark-red: #720e16; /* Un tono más oscuro para gradientes */
+            --accent-rose: #D4A5A5; /* Color rosado/grisáceo del subtítulo */
+            
+            /* Colores complementarios */
+            --tech-teal: #006d77; /* Verde azulado para la sección de Data/Tech */
             --text-color: #333333;
+            --light-gray: #f9f9f9;
             --white: #ffffff;
+
+            /* Definición de Gradientes */
+            --hero-gradient: linear-gradient(135deg, rgba(163, 22, 33, 0.95) 0%, rgba(114, 14, 22, 0.9) 100%);
+            --button-gradient: linear-gradient(to right, var(--primary-red), #c92a35);
+            --divider-gradient: linear-gradient(to right, var(--primary-red), var(--accent-rose));
         }
 
         body {
@@ -20,11 +30,12 @@
             padding: 0;
             color: var(--text-color);
             line-height: 1.6;
+            background-color: var(--light-gray);
         }
 
-        /* --- HEADER & HERO --- */
+        /* --- HEADER --- */
         header {
-            background-color: var(--primary-color);
+            background: linear-gradient(to right, var(--primary-red), var(--primary-dark-red));
             color: var(--white);
             padding: 1rem 5%;
             position: sticky;
@@ -33,19 +44,31 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
 
-        .logo {
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
             font-size: 1.5rem;
-            font-weight: bold;
+            font-weight: 800;
             letter-spacing: 1px;
+            margin-right: 10px;
+        }
+        
+        .logo-subtext {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #e0e0e0; /* Ligeramente más claro para contraste en el header */
         }
 
         nav ul {
             list-style: none;
             display: flex;
-            gap: 20px;
+            gap: 25px;
             margin: 0;
             padding: 0;
         }
@@ -54,208 +77,291 @@
             color: var(--white);
             text-decoration: none;
             font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
         }
 
+        nav a:hover {
+            color: var(--accent-rose);
+            border-bottom: 2px solid var(--accent-rose);
+        }
+
+        /* --- HERO (PORTADA CON GRADIENTE) --- */
         .hero {
-            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.8)), url('https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
+            /* Se usa el nuevo gradiente rojo sobre la imagen de fondo */
+            background: var(--hero-gradient), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
             background-position: center;
+            background-attachment: fixed; /* Efecto parallax sutil */
             color: var(--white);
-            padding: 100px 5%;
+            padding: 140px 5%;
             text-align: center;
         }
 
         .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
+            font-size: 3.2rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.1;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .hero p {
-            font-size: 1.2rem;
-            max-width: 800px;
-            margin: 0 auto 2rem auto;
+            font-size: 1.3rem;
+            max-width: 850px;
+            margin: 0 auto 2.8rem auto;
+            opacity: 0.95;
         }
 
         .cta-button {
-            background-color: var(--accent-color);
+            background-image: var(--button-gradient);
             color: var(--white);
-            padding: 15px 30px;
+            padding: 16px 38px;
             text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            transition: background 0.3s;
+            border-radius: 50px; /* Botones redondeados más modernos */
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(163, 22, 33, 0.4);
         }
 
         .cta-button:hover {
-            background-color: #9a7d0a;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(163, 22, 33, 0.6);
+            background-image: linear-gradient(to right, #b81926, #d63440);
         }
 
-        /* --- SECCIONES DE SERVICIOS --- */
-        .section-title {
-            text-align: center;
-            margin: 3rem 0;
-            color: var(--primary-color);
-        }
-        
-        .section-title h2 {
-            font-size: 2.2rem;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .section-title h2::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: var(--accent-color);
-            margin: 10px auto 0;
-        }
-
+        /* --- TITULOS Y ESTRUCTURA --- */
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin: 5rem 0 2.5rem 0;
+            color: var(--primary-red);
+        }
+        
+        .section-title h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+        
+        /* Línea decorativa con gradiente debajo del título */
+        .section-title h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--divider-gradient);
+            margin: 12px auto 0;
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 4rem;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 35px;
+            margin-bottom: 2rem;
         }
 
+        /* --- TARJETAS (CARDS) --- */
         .card {
             background: var(--white);
-            border: 1px solid #e1e1e1;
-            border-radius: 8px;
-            padding: 25px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 12px;
+            padding: 35px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: none; /* Quitamos el borde simple */
         }
 
+        /* Bordes superiores de colores */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+        }
+
+        .card.academic::before { background: var(--primary-red); }
+        .card.tech::before { background: var(--tech-teal); }
+        .card.market::before { background: linear-gradient(to right, #777, #999); }
+
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            border-top: 4px solid var(--accent-color);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
         }
 
         .card h3 {
-            color: var(--primary-color);
-            margin-top: 0;
-            font-size: 1.4rem;
+            color: var(--primary-red);
+            margin-top: 0.5rem;
+            font-size: 1.5rem;
+            font-weight: 700;
         }
 
+        .card.tech h3 { color: var(--tech-teal); }
+        .card.market h3 { color: #555; }
+
         .card p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: #555;
+            margin-bottom: 0;
+            line-height: 1.7;
         }
 
         .badge {
             display: inline-block;
-            background-color: #e3f2fd;
-            color: var(--primary-color);
-            padding: 4px 8px;
-            border-radius: 4px;
+            padding: 5px 12px;
+            border-radius: 25px;
             font-size: 0.8rem;
-            font-weight: bold;
-            margin-bottom: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            margin-bottom: 18px;
         }
 
+        .card.academic .badge { background-color: #fbececed; color: var(--primary-red); }
+        
         /* --- FOOTER --- */
         footer {
-            background-color: #222;
-            color: #ccc;
+            background: linear-gradient(to bottom, #4a0a0f, #2b0608); /* Gradiente oscuro rojizo */
+            color: #d1d1d1;
             text-align: center;
-            padding: 2rem 0;
-            margin-top: 4rem;
+            padding: 4rem 0;
+            margin-top: 6rem;
         }
 
-        footer p {
-            margin: 0.5rem 0;
-        }
-        
+        footer h3 { color: var(--white); font-size: 1.8rem; margin-bottom: 1rem; }
+        footer strong { color: var(--accent-rose); }
+
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-            nav ul { display: none; } /* Simplificado para el ejemplo */
-            .logo { display: block; margin: 0 auto; }
+            .hero { padding: 100px 5%; }
+            .hero h1 { font-size: 2.2rem; }
+            nav ul { display: none; } 
+            .logo-container { margin: 0 auto; flex-direction: column; }
+            .logo-text { margin-right: 0; margin-bottom: 5px; }
+            .cta-button { width: 80%; text-align: center; padding: 15px 20px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">CONSULTORÍA ACADÉMICA INTEGRAL</div>
+        <div class="logo-container">
+            <span class="logo-text">GRADUM</span>
+            <span class="logo-subtext">TESIS & INVESTIGACIÓN</span>
+        </div>
         <nav>
             <ul>
                 <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#tesis">Tesis y Grados</a></li>
-                <li><a href="#corporativo">Corporativo</a></li>
+                <li><a href="#tesis">Académico</a></li>
+                <li><a href="#tech">Data & Sci</a></li>
+                <li><a href="#corporativo">Empresas</a></li>
                 <li><a href="#contacto">Contacto</a></li>
             </ul>
         </nav>
     </header>
 
     <section class="hero" id="inicio">
-        <h1>Investigación con Rigor Científico</h1>
-        <p>Asesoría especializada para tesistas y soluciones de mercado para empresas. Metodología garantizada, fuentes confiables y ética profesional.</p>
-        <a href="#contacto" class="cta-button">Solicitar Asesoría Gratuita</a>
+        <h1>Investigación con Rigor y Ciencia de Datos</h1>
+        <p>Potenciamos tu futuro académico y empresarial. Asesoría de tesis de alto nivel, análisis estadístico avanzado, edición en LaTeX y soluciones de Business Intelligence.</p>
+        <a href="#contacto" class="cta-button">Solicitar Asesoría Ahora</a>
     </section>
 
     <div class="container">
         
         <div class="section-title" id="tesis">
-            <h2>Línea de Asesoría Académica</h2>
-            <p>Tu camino hacia la titulación, gestionado por expertos.</p>
+            <h2>Investigación y Grados Académicos</h2>
+            <p>Excelencia en el acompañamiento para Pregrado y Posgrado.</p>
         </div>
 
         <div class="services-grid">
-            <div class="card">
-                <span class="badge">Más Solicitado</span>
-                <h3>Tesis "Cero a Fin"</h3>
-                <p>Acompañamiento integral desde la elección del tema hasta la sustentación. Incluye estructuración de matriz, redacción por capítulos y simulacros de defensa.</p>
+            <div class="card academic">
+                <span class="badge">Integral</span>
+                <h3>Programa "Tesis Cero a Fin"</h3>
+                <p>Coaching completo: desde la idea inicial y matriz de consistencia, hasta la redacción capitular y preparación para la defensa exitosa.</p>
             </div>
             
-            <div class="card">
-                <span class="badge">Análisis de Datos</span>
-                <h3>Consultoría Estadística</h3>
-                <p>Procesamiento de datos con SPSS, R o Python. Pruebas de hipótesis, normalidad y modelos complejos. Te entregamos la interpretación redactada lista para tu informe.</p>
+            <div class="card academic">
+                <span class="badge">Estadística</span>
+                <h3>Análisis Cuantitativo</h3>
+                <p>Procesamiento con SPSS/R/Python. Pruebas de hipótesis, modelos avanzados y redacción técnica de la interpretación de resultados.</p>
             </div>
 
-            <div class="card">
-                <span class="badge">Corrección</span>
-                <h3>Auditoría Anti-Plagio e IA</h3>
-                <p>Reducción de índices de similitud (Turnitin) y humanización de textos generados por IA. Garantizamos el cumplimiento de normas APA 7ma, Vancouver o ISO.</p>
-            </div>
-
-            <div class="card">
-                <span class="badge">Oratoria</span>
-                <h3>Taller de Defensa Exitosa</h3>
-                <p>Preparación para la sustentación. Diseño de diapositivas de alto impacto, manejo de nervios y entrenamiento para responder las preguntas difíciles del jurado.</p>
+            <div class="card academic">
+                <span class="badge">Ética & Estilo</span>
+                <h3>Auditoría de Calidad</h3>
+                <p>Reporte y reducción de similitud (Turnitin), humanización de textos con IA y corrección de estilo normativa (APA 7, Vancouver, IEEE).</p>
             </div>
         </div>
 
-
-        <div class="section-title" id="corporativo">
-            <h2>Soluciones Corporativas y Especializadas</h2>
-            <p>Servicios avanzados para publicaciones y empresas.</p>
+        <div class="section-title" id="tech">
+            <h2>Ciencia de Datos y Tecnología</h2>
+            <p>Servicios especializados de alta ingeniería y edición científica.</p>
         </div>
 
         <div class="services-grid">
-            <div class="card">
-                <h3>Transformación a Paper (Scopus)</h3>
-                <p>Adaptamos tu tesis al formato de artículo científico (IMRyD) para su publicación en revistas indexadas de alto impacto. Traducción técnica incluida.</p>
+            <div class="card tech">
+                <span class="badge" style="background: #e0f7fa; color: var(--tech-teal);">Business Intelligence</span>
+                <h3>Analítica de Datos (BI)</h3>
+                <p>Desarrollo de Dashboards interactivos en Power BI o Tableau para transformar datos crudos en insights estratégicos para la toma de decisiones.</p>
             </div>
 
-            <div class="card">
-                <h3>Estudios de Mercado</h3>
-                <p>Análisis de viabilidad para nuevos emprendimientos. Encuestas segmentadas, benchmarking de competencia y proyecciones financieras.</p>
+            <div class="card tech">
+                <span class="badge" style="background: #e0f7fa; color: var(--tech-teal);">Machine Learning</span>
+                <h3>Ciencia de Datos Aplicada</h3>
+                <p>Creación de modelos predictivos, algoritmos de clasificación y minería de datos utilizando Python y R para proyectos complejos.</p>
             </div>
 
-            <div class="card">
+            <div class="card tech">
+                <span class="badge" style="background: #e0f7fa; color: var(--tech-teal);">Edición Técnica</span>
+                <h3>Diagramación en LaTeX</h3>
+                <p>Migración profesional de documentos a LaTeX (Overleaf). Perfecto para tesis de ingeniería, matemáticas y artículos con alta carga de fórmulas.</p>
+            </div>
+        </div>
+
+        <div class="section-title" id="corporativo">
+            <h2>Soluciones Corporativas</h2>
+            <p>Investigación aplicada al mercado y publicaciones.</p>
+        </div>
+
+        <div class="services-grid">
+            <div class="card market">
+                <span class="badge" style="background: #eee; color: #555;">Publicación</span>
+                <h3>Transformación a Paper</h3>
+                <p>Adaptación rigurosa de tesis al formato de artículo científico (IMRyD) para su postulación a revistas indexadas (Scopus, WoS).</p>
+            </div>
+
+            <div class="card market">
+                <span class="badge" style="background: #eee; color: #555;">Negocios</span>
+                <h3>Investigación de Mercado</h3>
+                <p>Estudios de viabilidad, análisis de competencia (benchmarking) y perfilamiento de consumidor para validar nuevas ideas de negocio.</p>
+            </div>
+
+            <div class="card market">
+                <span class="badge" style="background: #eee; color: #555;">Metodología</span>
                 <h3>Validación de Instrumentos</h3>
-                <p>Gestión de juicio de expertos. Obtenemos la certificación de validez de contenido firmada por especialistas de tu rubro para tus encuestas.</p>
+                <p>Gestión del proceso de juicio de expertos para certificar la validez de contenido de tus encuestas y herramientas de recolección.</p>
             </div>
         </div>
 
@@ -263,10 +369,10 @@
 
     <footer id="contacto">
         <div class="container">
-            <h3>¿Listo para avanzar?</h3>
-            <p>Hablemos de tu proyecto académico o empresarial con total confidencialidad.</p>
-            <p><strong>Correo:</strong> contacto@tuconsultoria.com | <strong>WhatsApp:</strong> +51 999 999 999</p>
-            <p style="font-size: 0.8rem; margin-top: 20px;">&copy; 2025 Consultoría Académica Integral. Todos los derechos reservados.</p>
+            <h3>¿Listo para elevar tu proyecto al siguiente nivel?</h3>
+            <p>Conversemos sobre tus objetivos con total confidencialidad.</p>
+            <p style="margin-top: 20px; font-size: 1.1rem;"><strong>Correo:</strong> contacto@gradum.com | <strong>WhatsApp:</strong> +51 900 000 000</p>
+            <p style="font-size: 0.8rem; margin-top: 30px; opacity: 0.7;">&copy; 2025 GRADUM Tesis & Investigación. Todos los derechos reservados.</p>
         </div>
     </footer>
 
