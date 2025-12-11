@@ -3,75 +3,149 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GRADUM | Catálogo de Servicios Premium</title>
+    <title>GRADUM | Catálogo de Servicios</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
-        /* --- 1. VARIABLES DE DISEÑO (TU PALETA ORIGINAL) --- */
+        /* --- 1. VARIABLES Y COLORES (Base del Código 1 + Lógica del Código 3) --- */
         :root {
-            /* Colores Base */
-            --primary-red: #A31621;         /* Rojo Académico */
+            /* Colores Principales (Del código original) */
+            --primary-red: #A31621;         
             --primary-dark-red: #720e16;
+            --accent-rose: #D4A5A5;
             
-            --tech-teal: #006d77;           /* Verde Corporativo */
+            /* Colores Corporativos (Para la sección Tech) */
+            --tech-teal: #006d77;           
             --tech-dark-teal: #004c54;
 
-            --accent-rose: #D4A5A5;
-            --text-main: #333333;
-            --text-light: #666666;
-            --bg-body: #f9f9f9;
+            /* Neutros */
+            --text-color: #333333;
+            --text-light: #666;
+            --light-gray: #f9f9f9;
             --white: #ffffff;
 
-            /* Gradientes Originales */
+            /* Gradientes */
             --hero-gradient: linear-gradient(135deg, rgba(163, 22, 33, 0.95) 0%, rgba(114, 14, 22, 0.9) 100%);
+            --button-gradient: linear-gradient(to right, var(--primary-red), #c92a35);
             --divider-gradient: linear-gradient(to right, var(--primary-red), var(--accent-rose));
         }
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            color: var(--text-color);
             line-height: 1.6;
+            background-color: var(--light-gray);
+        }
+
+        /* --- 2. CABECERA NAVEGABLE (HEADER DEL PRIMER CÓDIGO) --- */
+        header {
+            background: linear-gradient(to right, var(--primary-red), var(--primary-dark-red));
+            color: var(--white);
+            padding: 1rem 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-right: 10px;
+        }
+        
+        .logo-subtext {
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #e0e0e0; 
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
             margin: 0;
             padding: 0;
         }
 
-        /* --- 2. HEADER TIPO HERO (TU DISEÑO ORIGINAL) --- */
-        header {
-            /* Mantenemos la imagen de fondo con el gradiente rojo */
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            padding-bottom: 5px;
+            border-bottom: 2px solid transparent;
+        }
+
+        nav a:hover {
+            color: var(--accent-rose);
+            border-bottom: 2px solid var(--accent-rose);
+        }
+
+        /* --- 3. SECCIÓN HERO (PORTADA DEL PRIMER CÓDIGO) --- */
+        .hero {
             background: var(--hero-gradient), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
             color: var(--white);
-            padding: 120px 5%;
+            padding: 140px 5%;
             text-align: center;
-            margin-bottom: 4rem;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            margin-bottom: 4rem; /* Espacio antes del contenido */
         }
 
-        header h1 {
-            font-size: 3.5rem;
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.2rem;
+            line-height: 1.1;
             font-weight: 800;
-            margin-bottom: 1rem;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            text-transform: uppercase;
-            letter-spacing: 2px;
+            margin-top: 0;
         }
 
-        header .subtitle {
-            font-size: 1.4rem;
+        .hero p {
+            font-size: 1.3rem;
+            max-width: 850px;
+            margin: 0 auto 2.8rem auto;
             opacity: 0.95;
-            max-width: 800px;
-            margin: 0 auto;
-            font-weight: 300;
         }
 
-        /* --- 3. ESTRUCTURA DE CONTENIDO (DEL NUEVO CÓDIGO) --- */
+        .cta-button {
+            background-image: var(--button-gradient);
+            color: var(--white);
+            padding: 16px 38px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(163, 22, 33, 0.4);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(163, 22, 33, 0.6);
+            background-image: linear-gradient(to right, #b81926, #d63440);
+        }
+
+        /* --- 4. ESTRUCTURA DE CONTENIDO (ESTILO TARJETAS DEL ÚLTIMO CÓDIGO) --- */
         .container {
             max-width: 1280px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 25px;
         }
 
         .category-wrapper {
@@ -94,15 +168,14 @@
         }
 
         .category-title {
-            font-size: 2.5rem;
+            font-size: 2.4rem;
             font-weight: 700;
-            color: var(--primary-red); /* Por defecto Rojo */
+            color: var(--primary-red);
             margin: 0;
             position: relative;
             display: inline-block;
         }
 
-        /* Línea decorativa debajo del título */
         .category-title::after {
             content: '';
             display: block;
@@ -122,13 +195,14 @@
             margin-right: auto;
         }
 
-        /* --- 4. GRID Y TARJETAS (ESTILO FUSIONADO) --- */
+        /* --- GRID SYSTEM --- */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
             gap: 2.5rem;
         }
 
+        /* --- TARJETAS DETALLADAS --- */
         .card {
             background: var(--white);
             border-radius: 12px;
@@ -137,7 +211,7 @@
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            border-top: 5px solid var(--primary-red); /* Borde superior Rojo por defecto */
+            border-top: 5px solid var(--primary-red);
         }
 
         .card:hover {
@@ -152,11 +226,11 @@
             margin-bottom: 1.5rem;
         }
 
-        /* Iconos Circulares */
+        /* Iconos */
         .card-icon-wrapper {
             width: 50px;
             height: 50px;
-            background: #fbececed; /* Fondo rojo muy suave */
+            background: #fbececed;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -171,7 +245,7 @@
             color: var(--white);
         }
 
-        /* Etiquetas (Tags) */
+        /* Tags */
         .tag {
             font-size: 0.75rem;
             font-weight: 700;
@@ -184,7 +258,7 @@
         }
 
         .card h3 {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
             font-weight: 700;
             color: var(--primary-red);
             margin-bottom: 1rem;
@@ -200,7 +274,7 @@
             padding-bottom: 1.5rem;
         }
 
-        /* Listas de Sub-servicios */
+        /* Sub-servicios */
         .sub-services {
             list-style: none;
             padding: 0;
@@ -229,7 +303,7 @@
             display: block;
             font-weight: 700;
             font-size: 0.95rem;
-            color: var(--text-main);
+            color: var(--text-color);
         }
 
         .sub-desc {
@@ -237,20 +311,17 @@
             color: var(--text-light);
         }
 
-        /* --- 5. VARIANTE CORPORATIVA (TEAL / VERDE AZULADO) --- */
-        /* Aplicamos lógica CSS para cambiar colores en la segunda sección */
+        /* --- ESTILOS CATEGORÍA II (TEAL) --- */
         .tech-section .category-title { color: var(--tech-teal); }
         .tech-section .category-title::after { background: var(--tech-teal); }
         
         .tech-section .card { border-top-color: var(--tech-teal); }
-        
         .tech-section .card h3 { color: var(--tech-teal); }
         
         .tech-section .card-icon-wrapper { background: #e0f7fa; color: var(--tech-teal); }
         .tech-section .card:hover .card-icon-wrapper { background: var(--tech-teal); color: var(--white); }
         
         .tech-section .tag { background: #e0f7fa; color: var(--tech-teal); }
-        
         .tech-section .check-icon { color: var(--tech-teal); }
 
 
@@ -262,11 +333,18 @@
             padding: 4rem 0;
             margin-top: 4rem;
         }
-        
+
+        footer h3 { color: var(--white); font-size: 1.8rem; margin-bottom: 1rem; }
+        footer strong { color: var(--accent-rose); }
+
         /* --- RESPONSIVE --- */
         @media (max-width: 768px) {
-            header { padding: 80px 5%; }
-            header h1 { font-size: 2.5rem; }
+            .hero { padding: 100px 5%; }
+            .hero h1 { font-size: 2.2rem; }
+            nav ul { display: none; } 
+            .logo-container { margin: 0 auto; flex-direction: column; }
+            .logo-text { margin-right: 0; margin-bottom: 5px; }
+            .cta-button { width: 80%; text-align: center; padding: 15px 20px; }
             .services-grid { grid-template-columns: 1fr; }
         }
     </style>
@@ -274,15 +352,29 @@
 <body>
 
     <header>
-        <div class="container">
-            <h1>GRADUM</h1>
-            <p class="subtitle">Excelencia en Investigación, Estadística y Ciencia de Datos.</p>
+        <div class="logo-container">
+            <span class="logo-text">GRADUM</span>
+            <span class="logo-subtext">TESIS & INVESTIGACIÓN</span>
         </div>
+        <nav>
+            <ul>
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#tesis">Académico</a></li>
+                <li><a href="#tech">Corporativo</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
     </header>
+
+    <section class="hero" id="inicio">
+        <h1>Investigación con Rigor y Ciencia de Datos</h1>
+        <p>Potenciamos tu futuro académico y empresarial. Asesoría de tesis de alto nivel, análisis estadístico avanzado, edición en LaTeX y soluciones de Business Intelligence.</p>
+        <a href="#contacto" class="cta-button">Solicitar Asesoría Ahora</a>
+    </section>
 
     <div class="container">
 
-        <div class="category-wrapper">
+        <div class="category-wrapper" id="tesis">
             <div class="category-header">
                 <span class="category-label">Categoría I</span>
                 <h2 class="category-title">Investigación y Grados Académicos</h2>
@@ -504,7 +596,7 @@
 
         <hr style="border: 0; height: 1px; background: linear-gradient(to right, transparent, #ccc, transparent); margin: 4rem 0;">
 
-        <div class="category-wrapper tech-section">
+        <div class="category-wrapper tech-section" id="tech">
             <div class="category-header">
                 <span class="category-label">Categoría II</span>
                 <h2 class="category-title">Soluciones Corporativas y Ciencia de Datos</h2>
@@ -618,11 +710,15 @@
                 </article>
             </div>
         </div>
-
     </div>
 
-    <footer>
-        <p>&copy; 2025 GRADUM. Excelencia Académica y Corporativa. Todos los derechos reservados.</p>
+    <footer id="contacto">
+        <div class="container">
+            <h3>¿Listo para elevar tu proyecto al siguiente nivel?</h3>
+            <p>Conversemos sobre tus objetivos con total confidencialidad.</p>
+            <p style="margin-top: 20px; font-size: 1.1rem;"><strong>Correo:</strong> contacto@gradum.site | <strong>WhatsApp:</strong> +51 900 000 000</p>
+            <p style="font-size: 0.8rem; margin-top: 30px; opacity: 0.7;">&copy; 2025 GRADUM Tesis & Investigación. Todos los derechos reservados.</p>
+        </div>
     </footer>
 
 </body>
