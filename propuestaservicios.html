@@ -3,369 +3,688 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GRADUM | Tesis, Investigación y Ciencia de Datos</title>
+    <title>Servicios GRADUM - Catálogo Premium</title>
+    <!-- Importamos FontAwesome para los iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
-        /* --- ESTILOS GENERALES Y PALETA DE COLORES (CSS) --- */
-        :root {
-            /* Colores extraídos del logo GRADUM */
-            --primary-red: #A31621; /* Rojo intenso del birrete y texto principal */
-            --primary-dark-red: #720e16; /* Un tono más oscuro para gradientes */
-            --accent-rose: #D4A5A5; /* Color rosado/grisáceo del subtítulo */
-            
-            /* Colores complementarios */
-            --tech-teal: #006d77; /* Verde azulado para la sección de Data/Tech */
-            --text-color: #333333;
-            --light-gray: #f9f9f9;
-            --white: #ffffff;
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
 
-            /* Definición de Gradientes */
-            --hero-gradient: linear-gradient(135deg, rgba(163, 22, 33, 0.95) 0%, rgba(114, 14, 22, 0.9) 100%);
-            --button-gradient: linear-gradient(to right, var(--primary-red), #c92a35);
-            --divider-gradient: linear-gradient(to right, var(--primary-red), var(--accent-rose));
+        :root {
+            /* PALETA CORPORATIVA PREMIUM (Inspirada en el Logo) */
+            
+            /* Color de Marca Principal (Vino Profundo) */
+            --brand-primary: #8a1c26; 
+            --brand-dark: #681219;
+            --brand-light: #b93c48;
+
+            /* Gradientes Refinados */
+            --header-gradient: linear-gradient(135deg, #5e0d15 0%, #8a1c26 60%, #a62633 100%);
+            --accent-gradient: linear-gradient(90deg, #d64550 0%, #8a1c26 100%);
+            
+            /* Colores Neutros (Slate - Grises azulados para elegancia) */
+            --text-main: #1e293b; /* Casi negro, pero más suave */
+            --text-secondary: #475569; /* Gris medio */
+            --bg-body: #f8fafc; /* Blanco frío muy sutil */
+            --bg-card: #ffffff;
+            
+            /* UI Elements */
+            --border-subtle: #e2e8f0;
+            --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            --shadow-hover: 0 20px 25px -5px rgba(0, 0, 0, 0.08), 0 10px 10px -5px rgba(0, 0, 0, 0.03);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: var(--text-color);
-            line-height: 1.6;
-            background-color: var(--light-gray);
+            font-family: 'Inter', sans-serif; /* Inter es el estándar actual para UI limpia */
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased; /* Suavizado de fuentes para Mac/iOS */
         }
 
-        /* --- HEADER --- */
+        /* --- HEADER PREMIUM --- */
         header {
-            background: linear-gradient(to right, var(--primary-red), var(--primary-dark-red));
-            color: var(--white);
-            padding: 1rem 5%;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-
-        .logo-container {
-            display: flex;
-            align-items: center;
-        }
-
-        .logo-text {
-            font-size: 1.5rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-            margin-right: 10px;
-        }
-        
-        .logo-subtext {
-            font-size: 0.9rem;
-            font-weight: 400;
-            color: #e0e0e0; /* Ligeramente más claro para contraste en el header */
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav a {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s;
-            padding-bottom: 5px;
-            border-bottom: 2px solid transparent;
-        }
-
-        nav a:hover {
-            color: var(--accent-rose);
-            border-bottom: 2px solid var(--accent-rose);
-        }
-
-        /* --- HERO (PORTADA CON GRADIENTE) --- */
-        .hero {
-            /* Se usa el nuevo gradiente rojo sobre la imagen de fondo */
-            background: var(--hero-gradient), url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed; /* Efecto parallax sutil */
-            color: var(--white);
-            padding: 140px 5%;
+            background: var(--header-gradient);
+            color: white;
+            padding: 6rem 2rem 5rem; /* Más espacio vertical */
             text-align: center;
+            clip-path: ellipse(130% 100% at 50% 0%); /* Curva moderna en la base */
+            margin-bottom: 4rem;
+            position: relative;
         }
 
-        .hero h1 {
-            font-size: 3.2rem;
-            margin-bottom: 1.2rem;
-            line-height: 1.1;
+        /* Patrón sutil de fondo para textura */
+        header::after {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: radial-gradient(rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 30px 30px;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        h1 {
+            font-family: 'Montserrat', sans-serif;
             font-weight: 800;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-size: 4rem;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        .hero p {
-            font-size: 1.3rem;
-            max-width: 850px;
-            margin: 0 auto 2.8rem auto;
-            opacity: 0.95;
-        }
-
-        .cta-button {
-            background-image: var(--button-gradient);
-            color: var(--white);
-            padding: 16px 38px;
-            text-decoration: none;
-            border-radius: 50px; /* Botones redondeados más modernos */
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: transform 0.3s, box-shadow 0.3s;
-            display: inline-block;
-            box-shadow: 0 4px 15px rgba(163, 22, 33, 0.4);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(163, 22, 33, 0.6);
-            background-image: linear-gradient(to right, #b81926, #d63440);
-        }
-
-        /* --- TITULOS Y ESTRUCTURA --- */
-        .container {
-            max-width: 1200px;
+        .subtitle {
+            font-size: 1.25rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 750px;
             margin: 0 auto;
-            padding: 0 25px;
+            font-weight: 400;
+            letter-spacing: 0.3px;
         }
 
-        .section-title {
-            text-align: center;
-            margin: 5rem 0 2.5rem 0;
-            color: var(--primary-red);
+        /* --- CONTENEDOR --- */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 24px;
         }
-        
-        .section-title h2 {
-            font-size: 2.4rem;
+
+        /* --- ENCABEZADOS DE SECCIÓN --- */
+        .category-wrapper {
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .category-header {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 3.5rem;
+            position: relative;
+        }
+
+        .category-label {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.85rem;
             font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--brand-light);
+            margin-bottom: 0.5rem;
+        }
+
+        .category-title {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--brand-primary);
+            margin-bottom: 1rem;
+            text-align: center;
             position: relative;
             display: inline-block;
-            margin-bottom: 15px;
         }
         
-        /* Línea decorativa con gradiente debajo del título */
-        .section-title h2::after {
+        /* Línea decorativa bajo el título */
+        .category-title::after {
             content: '';
             display: block;
-            width: 80px;
+            width: 60px;
             height: 4px;
-            background: var(--divider-gradient);
-            margin: 12px auto 0;
+            background: var(--accent-gradient);
+            margin: 10px auto 0;
             border-radius: 2px;
         }
 
-        .section-title p {
+        .category-desc {
+            color: var(--text-secondary);
             font-size: 1.1rem;
-            color: #666;
-            max-width: 700px;
-            margin: 0 auto;
+            max-width: 600px;
+            text-align: center;
         }
 
+        /* --- GRID SYSTEM --- */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 35px;
-            margin-bottom: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: 2.5rem;
         }
 
         /* --- TARJETAS (CARDS) --- */
         .card {
-            background: var(--white);
-            border-radius: 12px;
-            padding: 35px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 2.5rem;
+            border: 1px solid rgba(0,0,0,0.04); /* Borde ultra sutil */
+            box-shadow: var(--shadow-soft);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efecto rebote suave */
             position: relative;
             overflow: hidden;
-            border: none; /* Quitamos el borde simple */
+            display: flex;
+            flex-direction: column;
         }
 
-        /* Bordes superiores de colores */
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+            border-color: rgba(138, 28, 38, 0.1); /* Tinte rojo al borde en hover */
+        }
+
+        /* Barra superior de color */
         .card::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
+            top: 0; left: 0; width: 100%; height: 6px;
+            background: var(--brand-primary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .card:hover::before {
+            opacity: 1;
         }
 
-        .card.academic::before { background: var(--primary-red); }
-        .card.tech::before { background: var(--tech-teal); }
-        .card.market::before { background: linear-gradient(to right, #777, #999); }
+        /* Encabezado de la Tarjeta */
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
 
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.12);
+        .card-icon-wrapper {
+            width: 56px;
+            height: 56px;
+            background: rgba(138, 28, 38, 0.08); /* Fondo rojo muy pálido */
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--brand-primary);
+            font-size: 1.5rem;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .card:hover .card-icon-wrapper {
+            background: var(--brand-primary);
+            color: white;
+        }
+
+        /* Tags Estilo "Píldora" */
+        .tag {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            padding: 6px 14px;
+            border-radius: 20px;
+            letter-spacing: 0.5px;
+        }
+
+        .tag-academic {
+            background: #fff1f2; /* Rojo suavísimo */
+            color: #9f1239; /* Rojo rubí */
+            border: 1px solid #ffe4e6;
+        }
+
+        .tag-corporate {
+            background: #f1f5f9;
+            color: #334155;
+            border: 1px solid #e2e8f0;
         }
 
         .card h3 {
-            color: var(--primary-red);
-            margin-top: 0.5rem;
-            font-size: 1.5rem;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.35rem;
             font-weight: 700;
+            color: var(--brand-dark);
+            margin-bottom: 1rem;
+            line-height: 1.3;
         }
 
-        .card.tech h3 { color: var(--tech-teal); }
-        .card.market h3 { color: #555; }
-
-        .card p {
-            font-size: 1rem;
-            color: #555;
-            margin-bottom: 0;
-            line-height: 1.7;
+        .main-desc {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-subtle);
         }
 
-        .badge {
-            display: inline-block;
-            padding: 5px 12px;
-            border-radius: 25px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.8px;
-            margin-bottom: 18px;
+        /* --- LISTA DE SUB-SERVICIOS --- */
+        .sub-services {
+            list-style: none;
+            margin-top: auto; /* Empuja la lista hacia abajo si sobra espacio */
         }
 
-        .card.academic .badge { background-color: #fbececed; color: var(--primary-red); }
-        
+        .sub-service-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 0.8rem;
+            border-radius: 8px;
+            transition: background 0.2s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .sub-service-item:hover {
+            background: #fafaf9; /* Fondo gris cálido muy sutil */
+        }
+
+        .check-icon {
+            color: var(--brand-light); /* Rojo más brillante para atención */
+            font-size: 0.85rem;
+            margin-top: 5px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        .sub-content {
+            flex: 1;
+        }
+
+        .sub-title {
+            display: block;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 2px;
+        }
+
+        .sub-desc {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
         /* --- FOOTER --- */
         footer {
-            background: linear-gradient(to bottom, #4a0a0f, #2b0608); /* Gradiente oscuro rojizo */
-            color: #d1d1d1;
+            background: #111827;
+            color: #94a3b8;
+            padding: 4rem 2rem;
             text-align: center;
-            padding: 4rem 0;
+            font-size: 0.9rem;
             margin-top: 6rem;
+            border-top: 6px solid var(--brand-dark);
         }
 
-        footer h3 { color: var(--white); font-size: 1.8rem; margin-bottom: 1rem; }
-        footer strong { color: var(--accent-rose); }
-
-        /* --- RESPONSIVE --- */
+        /* --- RESPONSIVE ADJUSTMENTS --- */
         @media (max-width: 768px) {
-            .hero { padding: 100px 5%; }
-            .hero h1 { font-size: 2.2rem; }
-            nav ul { display: none; } 
-            .logo-container { margin: 0 auto; flex-direction: column; }
-            .logo-text { margin-right: 0; margin-bottom: 5px; }
-            .cta-button { width: 80%; text-align: center; padding: 15px 20px; }
+            h1 { font-size: 2.8rem; }
+            header { padding: 4rem 1.5rem 4rem; border-radius: 0; clip-path: none; }
+            .category-title { font-size: 2rem; }
+            .services-grid { grid-template-columns: 1fr; }
+            .card { padding: 1.5rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-container">
-            <span class="logo-text">GRADUM</span>
-            <span class="logo-subtext">TESIS & INVESTIGACIÓN</span>
+        <div class="container">
+            <h1>GRADUM</h1>
+            <p class="subtitle">Excelencia en Investigación, Estadística y Ciencia de Datos.</p>
         </div>
-        <nav>
-            <ul>
-                <li><a href="#inicio">Inicio</a></li>
-                <li><a href="#tesis">Académico</a></li>
-                <li><a href="#tech">Data & Sci</a></li>
-                <li><a href="#corporativo">Empresas</a></li>
-                <li><a href="#contacto">Contacto</a></li>
-            </ul>
-        </nav>
     </header>
 
-    <section class="hero" id="inicio">
-        <h1>Investigación con Rigor y Ciencia de Datos</h1>
-        <p>Potenciamos tu futuro académico y empresarial. Asesoría de tesis de alto nivel, análisis estadístico avanzado, edición en LaTeX y soluciones de Business Intelligence.</p>
-        <a href="#contacto" class="cta-button">Solicitar Asesoría Ahora</a>
-    </section>
-
     <div class="container">
-        
-        <div class="section-title" id="tesis">
-            <h2>Investigación y Grados Académicos</h2>
-            <p>Excelencia en el acompañamiento para Pregrado y Posgrado.</p>
+
+        <!-- CATEGORÍA I -->
+        <div class="category-wrapper">
+            <div class="category-header">
+                <span class="category-label">Categoría I</span>
+                <h2 class="category-title">Investigación y Grados Académicos</h2>
+                <p class="category-desc">Soluciones rigurosas para estudiantes de pregrado y posgrado enfocadas en la aprobación académica.</p>
+            </div>
+
+            <div class="services-grid">
+                <!-- Card 1 -->
+                <article class="card">
+                    <div class="card-header">
+                        <div class="card-icon-wrapper">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span class="tag tag-academic">Gestión Integral</span>
+                    </div>
+                    <h3>1. Programa "Tesis de Cero Hasta su Aprobación"</h3>
+                    <p class="main-desc">Coaching completo: desde la idea inicial y matriz de consistencia, hasta la redacción y defensa.</p>
+                    
+                    <ul class="sub-services">
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">1.1 Ideación y Plan</span>
+                                <span class="sub-desc">Definición de tema y variables hasta aprobación del plan.</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">1.2 Desarrollo Capitular</span>
+                                <span class="sub-desc">Redacción académica de Marco Teórico, Metodología y Resultados.</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">1.3 Coaching de Defensa</span>
+                                <span class="sub-desc">Simulacros tipo jurado y oratoria de alto impacto.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="card">
+                    <div class="card-header">
+                        <div class="card-icon-wrapper">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <span class="tag tag-academic">Estadística</span>
+                    </div>
+                    <h3>2. Análisis Cuantitativo y Estadístico</h3>
+                    <p class="main-desc">Procesamiento profesional con SPSS/R/Python y redacción técnica de resultados.</p>
+                    
+                    <ul class="sub-services">
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">2.1 Limpieza de Datos</span>
+                                <span class="sub-desc">Depuración de bases, outliers y codificación de variables.</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">2.2 Pruebas de Hipótesis</span>
+                                <span class="sub-desc">Chi-cuadrado, T-Student, Rho de Spearman según normalidad.</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">2.3 Interpretación Técnica</span>
+                                <span class="sub-desc">Tablas formato APA y redacción lista para insertar en tesis.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="card">
+                    <div class="card-header">
+                        <div class="card-icon-wrapper">
+                            <i class="fas fa-file-signature"></i>
+                        </div>
+                        <span class="tag tag-academic">Calidad</span>
+                    </div>
+                    <h3>3. Auditoría de Calidad Académica</h3>
+                    <p class="main-desc">Soluciones de emergencia para tesis observadas: Turnitin, estilo y humanización.</p>
+                    
+                    <ul class="sub-services">
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">3.1 Reducción Turnitin</span>
+                                <span class="sub-desc">Parafraseo técnico manual garantizando sentido académico.</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">3.2 Humanización (Anti-IA)</span>
+                                <span class="sub-desc">Edición de textos IA para dotarlos de "voz de autor".</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">3.3 Corrección de Estilo</span>
+                                <span class="sub-desc">Normativa APA 7, Vancouver o IEEE al detalle.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="card">
+                    <div class="card-header">
+                        <div class="card-icon-wrapper">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <span class="tag tag-academic">Publicación</span>
+                    </div>
+                    <h3>4. Transformación a Paper Científico</h3>
+                    <p class="main-desc">Adaptación rigurosa de tesis al formato IMRyD para postulación en Scopus/WoS.</p>
+                    
+                    <ul class="sub-services">
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">4.1 Formato IMRyD</span>
+                                <span class="sub-desc">Condensación de tesis a artículo de 15 páginas estándar.</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">4.2 Traducción Técnica</span>
+                                <span class="sub-desc">Inglés científico académico (necesario para Q1/Q2).</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">4.3 Gestión de Submission</span>
+                                <span class="sub-desc">Soporte en plataforma de revista y Cover Letter.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- Card 5 -->
+                <article class="card">
+                    <div class="card-header">
+                        <div class="card-icon-wrapper">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <span class="tag tag-academic">LaTeX</span>
+                    </div>
+                    <h3>5. Diagramación Profesional en LaTeX</h3>
+                    <p class="main-desc">Migración a Overleaf para papers que requieren presentación visual impecable.</p>
+                    
+                    <ul class="sub-services">
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">5.1 Migración a Overleaf</span>
+                                <span class="sub-desc">Traslado de Word a código LaTeX profesional.</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">5.2 Tipografía Matemática</span>
+                                <span class="sub-desc">Codificación de ecuaciones complejas y matrices.</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">5.3 Ajuste a Plantilla</span>
+                                <span class="sub-desc">Adaptación a clases específicas (ej. IEEE Conference).</span>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
+
+                <!-- Card 6 -->
+                <article class="card">
+                    <div class="card-header">
+                        <div class="card-icon-wrapper">
+                            <i class="fas fa-tasks"></i>
+                        </div>
+                        <span class="tag tag-academic">Metodología</span>
+                    </div>
+                    <h3>6. Validación de Instrumentos</h3>
+                    <p class="main-desc">Certificación de validez y confiabilidad para herramientas de recolección de datos.</p>
+                    
+                    <ul class="sub-services">
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">6.1 Matriz de Validación</span>
+                                <span class="sub-desc">Vinculación de ítems y variables para jueces.</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">6.2 Juicio de Expertos</span>
+                                <span class="sub-desc">Gestión de expertos (Magíster/Doctor) y constancias.</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">6.3 Análisis Confiabilidad</span>
+                                <span class="sub-desc">Cálculo de Alfa de Cronbach o V de Aiken.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
+            </div>
         </div>
 
-        <div class="services-grid">
-            <div class="card academic">
-                <span class="badge">Integral</span>
-                <h3>Programa "Tesis de Cero Hasta su Aprobación"</h3>
-                <p>Coaching completo: desde la idea inicial y matriz de consistencia, hasta la redacción capitular y preparación para la defensa exitosa.</p>
-            </div>
-            
-            <div class="card academic">
-                <span class="badge">Estadística</span>
-                <h3>Análisis Cuantitativo</h3>
-                <p>Procesamiento con SPSS/R/Python. Pruebas de hipótesis, modelos avanzados y redacción técnica de la interpretación de resultados.</p>
+        <hr style="border: 0; height: 1px; background: #e2e8f0; margin: 4rem 0;">
+
+        <!-- CATEGORÍA II -->
+        <div class="category-wrapper">
+            <div class="category-header">
+                <span class="category-label">Categoría II</span>
+                <h2 class="category-title">Soluciones Corporativas y Ciencia de Datos</h2>
+                <p class="category-desc">Ingeniería de datos avanzada para la toma de decisiones estratégicas de negocio.</p>
             </div>
 
-            <div class="card academic">
-                <span class="badge">Ética & Estilo</span>
-                <h3>Auditoría de Calidad</h3>
-                <p>Reporte y reducción de similitud (Turnitin), humanización de textos con IA y corrección de estilo normativa (APA 7, Vancouver, IEEE).</p>
-            </div>
+            <div class="services-grid">
+                <!-- Card 1 Corp -->
+                <article class="card">
+                    <div class="card-header">
+                        <div class="card-icon-wrapper">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <span class="tag tag-corporate">Negocios</span>
+                    </div>
+                    <h3>1. Investigación de Mercado</h3>
+                    <p class="main-desc">Estudios de viabilidad y análisis de competencia para validar nuevas inversiones.</p>
+                    
+                    <ul class="sub-services">
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">1.1 Muestreo y Campo</span>
+                                <span class="sub-desc">Diseño de muestra representativa y encuestas.</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">1.2 Benchmarking</span>
+                                <span class="sub-desc">Análisis comparativo de precios y competencia.</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">1.3 Viabilidad</span>
+                                <span class="sub-desc">Proyección financiera y análisis de demanda.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
 
-            <div class="card academic">
-                <span class="badge">Publicación</span>
-                <h3>Transformación a Paper</h3>
-                <p>Adaptación rigurosa de tesis al formato de artículo científico (IMRyD) para su postulación a revistas indexadas (Scopus, WoS).</p>
-            </div>
+                <!-- Card 2 Corp -->
+                <article class="card">
+                    <div class="card-header">
+                        <div class="card-icon-wrapper">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <span class="tag tag-corporate">BI & Analytics</span>
+                    </div>
+                    <h3>2. Business Intelligence (BI)</h3>
+                    <p class="main-desc">Dashboards interactivos en Power BI/Tableau para visualización de KPIs.</p>
+                    
+                    <ul class="sub-services">
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">2.1 ETL (Integración)</span>
+                                <span class="sub-desc">Conexión y limpieza de múltiples fuentes de datos.</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">2.2 Dashboards</span>
+                                <span class="sub-desc">Tableros de control visuales en tiempo real.</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">2.3 Automatización</span>
+                                <span class="sub-desc">Reportes ejecutivos auto-actualizables.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
 
-            <div class="card academic">
-                <span class="badge">Edición Técnica</span>
-                <h3>Diagramación en LaTeX</h3>
-                <p>Supera la barrera del formato en tu postulación. Migramos tu investigación a LaTeX (Overleaf) ajustándonos a la plantilla oficial de la revista objetivo, asegurando una presentación impecable de fórmulas y bibliografía.</p>
-            </div>
-
-            <div class="card academic">
-                <span class="badge">Metodología</span>
-                <h3>Validación de Instrumentos</h3>
-                <p>Gestión del proceso de juicio de expertos para certificar la validez de contenido de tus encuestas y herramientas de recolección.</p>
+                <!-- Card 3 Corp -->
+                <article class="card">
+                    <div class="card-header">
+                        <div class="card-icon-wrapper">
+                            <i class="fas fa-brain"></i>
+                        </div>
+                        <span class="tag tag-corporate">Machine Learning</span>
+                    </div>
+                    <h3>3. Ciencia de Datos Aplicada</h3>
+                    <p class="main-desc">Modelos predictivos y algoritmos avanzados con Python y R.</p>
+                    
+                    <ul class="sub-services">
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">3.1 Modelos Predictivos</span>
+                                <span class="sub-desc">Regresiones y Series de Tiempo para pronósticos.</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">3.2 Clustering</span>
+                                <span class="sub-desc">Segmentación inteligente de clientes por conducta.</span>
+                            </div>
+                        </li>
+                        <li class="sub-service-item">
+                            <i class="fas fa-check-circle check-icon"></i>
+                            <div class="sub-content">
+                                <span class="sub-title">3.3 Minería de Datos</span>
+                                <span class="sub-desc">Descubrimiento de patrones ocultos y causas raíz.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </article>
             </div>
         </div>
 
-        <div class="section-title" id="tech">
-            <h2>Soluciones Corporativas y Ciencia de Datos</h2>
-            <p>Servicios especializados de alta ingeniería para la toma de decisiones e investigación de mercados.</p>
-        </div>
-
-        <div class="services-grid">
-            <div class="card tech">
-                <span class="badge" style="background: #e0f7fa; color: var(--tech-teal);">Negocios</span>
-                <h3>Investigación de Mercado</h3>
-                <p>Estudios de viabilidad, análisis de competencia (benchmarking) y perfilamiento de consumidor para validar nuevas ideas de negocio.</p>
-            </div>
-            
-            <div class="card tech">
-                <span class="badge" style="background: #e0f7fa; color: var(--tech-teal);">Business Intelligence</span>
-                <h3>Analítica de Datos (BI)</h3>
-                <p>Desarrollo de Dashboards interactivos en Power BI o Tableau para transformar datos crudos en insights estratégicos para la toma de decisiones.</p>
-            </div>
-
-            <div class="card tech">
-                <span class="badge" style="background: #e0f7fa; color: var(--tech-teal);">Machine Learning</span>
-                <h3>Ciencia de Datos Aplicada</h3>
-                <p>Creación de modelos predictivos, algoritmos de clasificación y minería de datos utilizando Python y R para proyectos complejos.</p>
-            </div>                        
-        </div>
     </div>
 
-    <footer id="contacto">
-        <div class="container">
-            <h3>¿Listo para elevar tu proyecto al siguiente nivel?</h3>
-            <p>Conversemos sobre tus objetivos con total confidencialidad.</p>
-            <p style="margin-top: 20px; font-size: 1.1rem;"><strong>Correo:</strong> contacto@gradum.site | <strong>WhatsApp:</strong> +51 900 000 000</p>
-            <p style="font-size: 0.8rem; margin-top: 30px; opacity: 0.7;">&copy; 2025 GRADUM Tesis & Investigación. Todos los derechos reservados.</p>
-        </div>
+    <footer>
+        <p>&copy; 2025 GRADUM. Excelencia Académica y Corporativa. Todos los derechos reservados.</p>
     </footer>
 
 </body>
